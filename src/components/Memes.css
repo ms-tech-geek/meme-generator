@@ -1,0 +1,40 @@
+.meme-card-layout {
+    list-style: none;   
+    margin: 0;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    background-color: #f0f0f0;
+}
+
+.meme-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.meme-card:hover {
+    transform: translateY(-5px);
+}
+
+.meme-card-name {
+    padding: 0.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eee;
+}
+
+.meme-card img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
