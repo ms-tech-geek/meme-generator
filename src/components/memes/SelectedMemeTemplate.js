@@ -3,20 +3,21 @@ import Modal from "../ui/Modal";
 import { useDispatch } from "react-redux";
 import { memeActions } from "../../store";
 
-
 const SelectedMemeTemplate = ({ meme, isOpen, onClose }) => {
 	const { url, name } = meme;
-	const topRef =  useRef();
-	const bottomRef =  useRef();
+	const topRef = useRef("");
+	const bottomRef = useRef("");
 	const dispatch = useDispatch();
-	
+
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
-		dispatch(memeActions.addCaptionsToSelectedTemplate({
-			topText : topRef.current.value,
-			bottomText: bottomRef.current.value
-		}))
-	}
+		dispatch(
+			memeActions.addCaptionsToSelectedTemplate({
+				topText: topRef.current.value,
+				bottomText: bottomRef.current.value,
+			})
+		);
+	};
 
 	return (
 		<Modal isOpen={isOpen} onClose={onClose}>
