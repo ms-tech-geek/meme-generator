@@ -1,9 +1,26 @@
+import { useDispatch } from "react-redux";
+import { memeActions } from "../../store";
 import "./Memes.css";
 
 const MemeTemplate = ({ meme }) => {
+	const dispatch = useDispatch();
+
+	const selectMemeTemplateHandler = () => {
+		dispatch(
+			memeActions.onSelectMemeTemplate({
+				id: meme.id,
+				name: meme.name,
+				url: meme.url,
+			})
+		);
+	};
+
 	return (
-		<li key={meme.id} className="meme-template">
-			<img src={meme.url} alt={meme.name}/>
+		<li
+			className="meme-template"
+			onClick={selectMemeTemplateHandler}
+		>
+			<img src={meme.url} alt={meme.name} />
 			<p className="meme-template-name">{meme.name}</p>
 		</li>
 	);
