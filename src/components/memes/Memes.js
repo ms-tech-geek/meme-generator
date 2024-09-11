@@ -1,12 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { memeActions } from "../../store";
 import MemeTemplate from "./MemeTemplate";
 import "./Memes.css";
+import SelectedMemeTemplate from "./SelectedMemeTemplate";
 
 const Memes = () => {
 	const dispatch = useDispatch();
 	const memeTemplates = useSelector((state) => state.memes.memeTemplates);
+	const selectedMemeTemplate = useSelector((state) => {
+		return state.memes.selectedMemeTemplate;
+	});
+
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const openModal = () => setIsModalOpen(true);
+	const closeModal = () => setIsModalOpen(false);
 
 	useEffect(() => {
 		const fetchMemeData = async () => {
@@ -18,11 +27,20 @@ const Memes = () => {
 	}, [dispatch]);
 
 	return (
-		<ul className="meme-templates-layout">
-			{memeTemplates.map((meme) => (
-				<MemeTemplate meme={meme} key={meme.id} />
-			))}
-		</ul>
+		<>
+			{isModalOpen && (
+				<SelectedMemeTemplate
+					meme={selectedMemeTemplate}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+				/>
+			)}
+			<ul className="meme-templates-layout">
+				{memeTemplates.map((meme) => (
+					<MemeTemplate meme={meme} key={meme.id} onOpen={openModal} />
+				))}
+			</ul>
+		</>
 	);
 };
 

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { memeActions } from "../../store";
 import "./Memes.css";
 
-const MemeTemplate = ({ meme }) => {
+const MemeTemplate = ({ meme, onOpen }) => {
 	const dispatch = useDispatch();
 
 	const selectMemeTemplateHandler = () => {
@@ -13,6 +13,7 @@ const MemeTemplate = ({ meme }) => {
 				url: meme.url,
 			})
 		);
+		onOpen()
 	};
 
 	return (
