@@ -13,6 +13,7 @@ const MemeTemplate = ({ meme, onOpen }) => {
 				url: meme.url,
 			})
 		);
+		dispatch(memeActions.setMemeGenerationProgress('template-selected'))
 		onOpen()
 	};
 

@@ -3,6 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const initialMemeState = {
 	memeTemplates: [],
 	selectedMemeTemplate: {},
+	memeGenerationProgress: ''
 };
 
 const memeSlice = createSlice({
@@ -23,10 +24,13 @@ const memeSlice = createSlice({
 			state.selectedMemeTemplate = {
 				...state.selectedMemeTemplate,
 				userInputs : {
-					topText : action.topText,
-					bottomText: action.bottomText
+					topText : action.payload.topText,
+					bottomText: action.payload.bottomText
 				}
 			}
+		},
+		setMemeGenerationProgress(state,action) {
+			state.memeGenerationProgress = action.payload
 		}
 	},
 });

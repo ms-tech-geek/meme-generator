@@ -17,6 +17,7 @@ const SelectedMemeTemplate = ({ meme, isOpen, onClose }) => {
 				bottomText: bottomRef.current.value,
 			})
 		);
+		dispatch(memeActions.setMemeGenerationProgress('meme-preview'))
 	};
 
 	return (

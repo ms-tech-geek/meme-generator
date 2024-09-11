@@ -4,6 +4,7 @@ import { memeActions } from "../../store";
 import MemeTemplate from "./MemeTemplate";
 import "./Memes.css";
 import SelectedMemeTemplate from "./SelectedMemeTemplate";
+import MemePreview from "./MemePreview";
 
 const Memes = () => {
 	const dispatch = useDispatch();
@@ -11,6 +12,10 @@ const Memes = () => {
 	const selectedMemeTemplate = useSelector((state) => {
 		return state.memes.selectedMemeTemplate;
 	});
+
+	const memeGenerationProgress = useSelector(
+		(state) => state.memes.memeGenerationProgress
+	);
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,8 +33,15 @@ const Memes = () => {
 
 	return (
 		<>
-			{isModalOpen && (
+			{isModalOpen && memeGenerationProgress === "template-selected" && (
 				<SelectedMemeTemplate
+					meme={selectedMemeTemplate}
+					isOpen={isModalOpen}
+					onClose={closeModal}
+				/>
+			)}
+			{isModalOpen && memeGenerationProgress === "meme-preview" && (
+				<MemePreview
 					meme={selectedMemeTemplate}
 					isOpen={isModalOpen}
 					onClose={closeModal}
