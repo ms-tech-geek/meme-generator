@@ -19,6 +19,15 @@ const memeSlice = createSlice({
 				url: action.payload.url,
 			};
 		},
+		addCaptionsToSelectedTemplate(state,action){
+			state.selectedMemeTemplate = {
+				...state.selectedMemeTemplate,
+				userInputs : {
+					topText : action.topText,
+					bottomText: action.bottomText
+				}
+			}
+		}
 	},
 });
 
