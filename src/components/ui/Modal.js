@@ -17,7 +17,7 @@ const Modal = ({ children, isOpen, onClose }) => {
   return (
     <dialog ref={dialogRef} className="modal" onClose={onClose}>
       {children}
-      <button className="close-btn" onClick={onClose}>Close</button>
+      <button className="close-btn" onClick={onClose}>X</button>
     </dialog>
   );
 };
