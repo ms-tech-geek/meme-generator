@@ -1,4 +1,4 @@
-import Memes from "./components/Memes";
+import Memes from "./components/memes/Memes";
 
 function App() {
  

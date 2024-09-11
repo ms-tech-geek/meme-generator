@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
+import MemeTemplate from "./MemeTemplate";
 import './Memes.css';
 
-const MemeCard = ({meme}	) => {
-	return (
-		<li key={meme.id} className='meme-card'>
-			<p className='meme-card-name'>{meme.name}</p>
-			<img src={meme.url} />
-		</li>
-	);
-};
 
 const Memes = () => {
 	const [memes, setMemes] = useState([]);
@@ -23,9 +16,9 @@ const Memes = () => {
 	}, []);
 
 	return (
-		<ul className="meme-card-layout">
+		<ul className="meme-templates-layout">
 			{memes.map((meme) => (
-				<MemeCard meme={meme} key={meme.id} />
+				<MemeTemplate meme={meme} key={meme.id} />
 			))}
 		</ul>
 	);
