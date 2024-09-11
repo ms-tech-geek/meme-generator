@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialMemeState = {
-	memes: [],
+	memeTemplates: [],
 	selectedMemeTemplate: {},
 };
 
@@ -9,7 +9,10 @@ const memeSlice = createSlice({
 	name: "memes",
 	initialState: initialMemeState,
 	reducers: {
-		onSelectMemeTemplate(state) {
+		setMemeTemplates(state, action) {
+			state.memeTemplates = action.payload;
+		},
+		onSelectMemeTemplate(state, action) {
 			state.selectedMemeTemplate = {
 				id: action.payload.id,
 				name: action.payload.name,
@@ -19,10 +22,12 @@ const memeSlice = createSlice({
 	},
 });
 
-export const memeActions = memeSlice.actions
+export const memeActions = memeSlice.actions;
 
 const store = configureStore({
-	reducer: {},
+	reducer: {
+		memes: memeSlice.reducer,
+	},
 });
 
 export default store;
